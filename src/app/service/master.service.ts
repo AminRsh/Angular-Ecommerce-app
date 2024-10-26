@@ -39,19 +39,16 @@ export class MasterService {
   }
 
   registerNewCustomer(obj: Customer): Observable<APIResponseModel> {
-    // debugger;
     const url = `${this.apiUrl}RegisterCustomer`
     return this.http.post<APIResponseModel>(url, obj)
   }
 
   addToCart(obj: CartModel): Observable<APIResponseModel> {
-    debugger;
     const url = `${this.apiUrl}AddToCart`
     return this.http.post<APIResponseModel>(url, obj)
   }
 
   loginCustomer(obj: LoginModel): Observable<APIResponseModel> {
-    debugger;
     const url = `${this.apiUrl}Login`
     return this.http.post<APIResponseModel>(url, obj)
   }

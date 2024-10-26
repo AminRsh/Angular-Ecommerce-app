@@ -31,7 +31,6 @@ export class CreateOrderComponent implements OnInit{
   }
 
   PlaceOrder() {
-    debugger;
     this.orderObj.CustId = this.masterService.loggedUserData.custId;
     this.orderObj.TotalInvoiceAmount = this.totalAmount;
     this.masterService.onPlaceOrder(this.orderObj).subscribe((res:APIResponseModel) => {

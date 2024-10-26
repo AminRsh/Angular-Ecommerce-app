@@ -79,7 +79,6 @@ export class AppComponent implements OnInit{
   }
 
   onRegister() {
-    // debugger;
     this.masterService.registerNewCustomer(this.registerObj).subscribe((res:APIResponseModel)=>{
       if (res.result) {
           alert("Registration Success");
@@ -91,7 +90,7 @@ export class AppComponent implements OnInit{
   }
 
   onLogin() {
-    debugger;
+   
     this.masterService.loginCustomer(this.loginObj).subscribe((res:APIResponseModel)=>{
       if (res.result) {
         this.loggedUserData = res.data;
