@@ -3,7 +3,7 @@ import { MasterService } from '../../service/master.service';
 import { APIResponseModel, CartModel, Category, Customer, ProductList } from '../../model/Product';
 import { map, Observable, pipe, Subscription } from 'rxjs';
 import { AsyncPipe, NgIf } from '@angular/common';
-import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-products',
@@ -21,7 +21,6 @@ export class ProductsComponent implements OnInit, OnDestroy{
   subscriptionList: Subscription[] = [];
 
   masterService = inject(MasterService);
-  toastr = inject(ToastrService); 
 
   placeholderImage: string = 'assets/images/placeholder.png';
 
@@ -46,7 +45,6 @@ export class ProductsComponent implements OnInit, OnDestroy{
   }
 
   onAddtoCart(id:number) {
-    // debugger;
     const newObj : CartModel = new CartModel()
     newObj.ProductId = id;
     newObj.CustId = this.masterService.loggedUserData.custId;
