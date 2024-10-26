@@ -1,9 +1,10 @@
-<div class="container-fluid">
+<div class="m-auto pt-3" style="width: 95%;">
     <div class="row">
-        <div class="col-2">
-            <h5 class="">Category</h5>
+        <div class="col-2" style="max-height: 620px">
+            <h5 class="mt-2">Category</h5>
             @for (item of categeoryList$ |async; track $index) {
-                <button class="btn btn-success mt-2" (click)="getProductsByCategory(item.categoryId)">{{item.categoryName}}</button>
+            <button class="btn btn-success mt-2 me-1"
+                (click)="getProductsByCategory(item.categoryId)">{{item.categoryName}}</button>
             }
         </div>
         <div class="col-10">
@@ -11,12 +12,18 @@
                 @for (item of productList(); track $index) {
                 <div class="col-3 pt-2">
                     <div class="card product-card">
-                        <img [src]="item.productImageUrl" class="card-img-top product-image" alt="Product Image">
+                        <img *ngIf="item.productImageUrl; else defaultImage" [src]="item.productImageUrl"
+                            class="card-img-top product-image" alt="Product Image">
+                        <ng-template #defaultImage>
+                            <img src="/src/assets/images/placeholder.png" class="card-img-top product-image"
+                                alt="Default Product Image">
+                        </ng-template>
                         <span class="category-badge">{{item.categoryName}}</span>
                         <div class="card-body">
                             <h5 class="card-title">{{item.productName}}</h5>
                             <p class="product-price">{{item.productPrice}}</p>
-                            <button class="btn add-to-cart-btn" (click)="onAddtoCart(item.productId)">Add to Cart</button>
+                            <button class="btn add-to-cart-btn" (click)="onAddtoCart(item.productId)">Add to
+                                Cart</button>
                         </div>
                     </div>
                 </div>

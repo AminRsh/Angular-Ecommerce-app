@@ -1,15 +1,14 @@
 import { Component, inject, OnDestroy, OnInit, signal } from '@angular/core';
 import { MasterService } from '../../service/master.service';
 import { APIResponseModel, CartModel, Category, Customer, ProductList } from '../../model/Product';
-import { map, Observable, Subscription } from 'rxjs';
-import { AsyncPipe } from '@angular/common';
-import { Constant } from '../../constant/constants';
+import { map, Observable, pipe, Subscription } from 'rxjs';
+import { AsyncPipe, NgIf } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [AsyncPipe],
+  imports: [AsyncPipe,NgIf],
   templateUrl: './products.component.html',
   styleUrl: './products.component.css'
 })
@@ -21,8 +20,10 @@ export class ProductsComponent implements OnInit, OnDestroy{
   categeoryList$: Observable<Category[]> = new Observable<Category[]>();
   subscriptionList: Subscription[] = [];
 
-  masterService = inject(MasterService)
-  toastr = inject(ToastrService) 
+  masterService = inject(MasterService);
+  toastr = inject(ToastrService); 
+
+  placeholderImage: string = 'assets/images/placeholder.png';
 
   ngOnInit(): void {
     this.loadAllProducts() 
@@ -65,4 +66,5 @@ export class ProductsComponent implements OnInit, OnDestroy{
         element.unsubscribe();
       });
   }
+
 }
