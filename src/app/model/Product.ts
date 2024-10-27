@@ -47,7 +47,7 @@ export class Customer {
     constructor() {
         this.custId = 0;
         this.MobileNo = '';
-        this.name = 'John Doe';
+        this.name = '';
         this.Password = '';
     }
 }

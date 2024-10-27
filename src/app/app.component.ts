@@ -90,7 +90,6 @@ export class AppComponent implements OnInit{
   }
 
   onLogin() {
-   
     this.masterService.loginCustomer(this.loginObj).subscribe((res:APIResponseModel)=>{
       if (res.result) {
         this.loggedUserData = res.data;
